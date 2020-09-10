@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
-var http = require("http").createServer(app);
-var io = require("socket.io")(http);
+// var http = require("http").createServer(app);
+// var io = require("socket.io")(http);
 
 // join -
 // spaceinfo -
@@ -25,19 +25,19 @@ app.use(express.static(__dirname + '/public'))
 //   res.sendFile(__dirname + "/public/index.html");
 // });
 
-io.on("connection", (socket) => {
-  console.log("connection socket : " + socket);
-  socket.emit("connection_success", "socket connected!!");
+// io.on("connection", (socket) => {
+//   console.log("connection socket : " + socket);
+//   socket.emit("connection_success", "socket connected!!");
 
-  socket.on("chat message", (msg) => {
-    console.log("message : " + msg);
-    io.emit("chat message", msg);
-  });
+//   socket.on("chat message", (msg) => {
+//     console.log("message : " + msg);
+//     io.emit("chat message", msg);
+//   });
 
-  socket.on("disconnect", () => {
-    console.log("user disconnected");
-  });
-});
+//   socket.on("disconnect", () => {
+//     console.log("user disconnected");
+//   });
+// });
 
 http.listen(3000, () => {
   console.log("listening on *:3000");
